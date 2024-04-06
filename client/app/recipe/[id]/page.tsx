@@ -16,11 +16,19 @@ import Cookies from "js-cookie";
 import { dateFormat } from "@/utils/dateFormat";
 import NetworkError from "@/components/NetworkError";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation";
+
+interface VoteLoad {
+  [recipeId: string]: boolean;
+}
 
 export default function RecipePage({ params }: { params: { id: string } }) {
   const [recipe, setRecipe] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [voteLoad, setVoteLoad] = useState<VoteLoad>({});
+  const router = useRouter();
+
   useEffect(() => {
     setLoading(true);
     const fetchRecipe = async () => {
@@ -53,6 +61,38 @@ export default function RecipePage({ params }: { params: { id: string } }) {
     fetchRecipe();
   }, [params.id]);
 
+  const handleVotes = async (recipeId: any) => {
+    setVoteLoad((prevState) => ({ ...prevState, [recipeId]: true }));
+    try {
+      const upvote = await Axios.put(
+        `http://localhost:7000/api/recipes/${recipeId}/upvote`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("currentUser")}`,
+          },
+        }
+      );
+      const response = await Axios.get(
+        `http://localhost:7000/api/recipe/${recipeId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("currentUser")}`,
+          },
+        }
+      );
+      const { recipe } = response.data;
+      setRecipe(recipe);
+      console.log(upvote.data);
+      setVoteLoad((prevState) => ({ ...prevState, [recipeId]: false }));
+    } catch (error) {
+      console.error(error);
+      setVoteLoad((prevState) => ({ ...prevState, [recipeId]: false }));
+    }
+  };
+
   if (error !== null) {
     return <NetworkError error={error} />;
   }
@@ -81,20 +121,21 @@ export default function RecipePage({ params }: { params: { id: string } }) {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/recipe">Recipe</Link>
-              </BreadcrumbLink>
+            <BreadcrumbItem
+              onClick={() => router.back()}
+              className="hover:cursor-pointer"
+            >
+              Recipe
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{recipe.title}</BreadcrumbPage>
+              <BreadcrumbPage>{recipe?.title}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
         <div className="py-10">
           <h1 className="text-4xl font-extrabold text-gray-800">
-            {recipe.title}
+            {recipe?.title}
           </h1>
           <div className="md:flex md:items-center md:gap-2 md:py-5 grid grid-cols-2 py-5 gap-2">
             <div className="inline-flex items-center space-x-2">
@@ -111,7 +152,7 @@ export default function RecipePage({ params }: { params: { id: string } }) {
                 <path d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M256,90  c37.02,0,67.031,35.468,67.031,79.219S293.02,248.438,256,248.438s-67.031-35.468-67.031-79.219S218.98,90,256,90z M369.46,402  H142.54c-11.378,0-20.602-9.224-20.602-20.602C121.938,328.159,181.959,285,256,285s134.062,43.159,134.062,96.398  C390.062,392.776,380.839,402,369.46,402z" />
               </svg>
               <p className="text-gray-800 text-sm font-semibold overflow-auto">
-                {recipe.recipeOwner}
+                {recipe?.recipeOwner}
               </p>
             </div>
             <div className="inline-flex items-center space-x-2">
@@ -129,7 +170,7 @@ export default function RecipePage({ params }: { params: { id: string } }) {
                 />
               </svg>
               <p className="text-gray-800 text-sm font-semibold">
-                {dateFormat(recipe.createdAt)}
+                {dateFormat(recipe?.createdAt)}
               </p>
             </div>
             <div className="inline-flex items-center space-x-2">
@@ -148,7 +189,7 @@ export default function RecipePage({ params }: { params: { id: string } }) {
                 ></path>
               </svg>
               <p className="text-gray-800 text-sm font-semibold">
-                {recipe.upvotes?.length} up votes
+                {recipe?.upvotes?.length} upvotes
               </p>
             </div>
           </div>
@@ -159,6 +200,9 @@ export default function RecipePage({ params }: { params: { id: string } }) {
             ingredients={recipe?.ingredients}
             instructions={recipe?.instructions}
             upvotes={recipe?.upvotes}
+            handleVotes={() => handleVotes(recipe?._id)}
+            voteLoad={voteLoad}
+            recipeId={recipe?._id}
           />
         </div>
       </div>
