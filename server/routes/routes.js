@@ -8,6 +8,7 @@ import {
   createRecipe,
   deleteRecipe,
   getAllRecipes,
+  getRecipe,
   getRecipeVotes,
   getUserRecipes,
   upVoteRecipe,
@@ -110,5 +111,16 @@ router.get("/userRecipes", authenticateUser, getUserRecipes);
  * @param {function} middleware
  */
 router.delete("/recipe/:recipeId/delete", authenticateUser, deleteRecipe);
+
+/**
+ * Route for getting a single recipe
+ * @name getRecipe
+ * @memberof router
+ * @function
+ * @inner
+ * @param {string} path
+ * @param {function} middleware
+ */
+router.get("/recipe/:recipeId", authenticateUser, getRecipe);
 
 export default router;
