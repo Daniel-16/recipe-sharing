@@ -71,7 +71,7 @@ export default function RecipeBlogs() {
     numCols = 2;
   }
   return (
-    <div className="max-w-screen-lg mx-auto mb-10">
+    <div className="max-w-screen-lg mx-auto mb-10 px-5 md:px-0">
       <Link
         href="/recipes"
         className="flex justify-end items-center pr-6 pb-3 hover:cursor-pointer text-[#7e525f] hover:text-[#986673] focus:text-[#7e525f]"
