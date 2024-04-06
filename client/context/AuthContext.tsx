@@ -25,7 +25,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsAuthenticated("true");
     }
     localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("username");
   }, []);
 
   useEffect(() => {
