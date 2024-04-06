@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { AuthContext } from "@/context/AuthContext";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { UserNameContext } from "@/context/UsernameContext";
 
 export default function Navbar() {
@@ -26,7 +26,7 @@ export default function Navbar() {
   const { section1, section2, section3 } = useContext(SectionContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const { username, setUsername } = useContext(UserNameContext);
-  // const router = useRouter();
+  const router = useRouter();
 
   const scrollToSection = (ref: RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -190,7 +190,9 @@ export default function Navbar() {
                         My recipes
                       </DropdownMenuItem>
                     </Link>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => router.push("/create-recipe")}
+                    >
                       <svg
                         className="w-5 mr-2"
                         viewBox="0 0 24 24"

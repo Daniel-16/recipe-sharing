@@ -110,9 +110,12 @@ export default function Recipes() {
                     src={recipe.imageUrl}
                     priority
                     alt={"Recipes"}
-                    className="w-full h-[40vh] rounded-t-lg object-cover"
+                    className="w-full h-[40vh] rounded-t-lg object-cover hover:cursor-pointer"
                     width={10}
                     height={10}
+                    onClick={() => {
+                      router.push(`recipe/${recipe._id}`);
+                    }}
                   />
                   <div className="mt-3 space-y-2 px-3 pb-3">
                     <span className="block text-[#7e525f] text-sm">
