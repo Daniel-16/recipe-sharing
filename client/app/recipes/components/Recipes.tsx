@@ -7,6 +7,7 @@ import { dateFormat } from "@/utils/dateFormat";
 import { Skeleton } from "@/components/ui/skeleton";
 import NetworkError from "@/components/NetworkError";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface VoteLoad {
   [recipeId: string]: boolean;
@@ -17,6 +18,7 @@ export default function Recipes() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [voteLoad, setVoteLoad] = useState<VoteLoad>({});
+  const router = useRouter();
 
   useEffect(() => {
     setLoading(true);
@@ -117,7 +119,12 @@ export default function Recipes() {
                       {dateFormat(recipe.createdAt)}
                     </span>
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg text-gray-800duration-150 group-hover:text-[#7e525f] font-semibold">
+                      <h3
+                        className="text-lg text-gray-800duration-150 group-hover:text-[#7e525f] font-semibold hover:cursor-pointer"
+                        onClick={() => {
+                          router.push(`recipe/${recipe._id}`);
+                        }}
+                      >
                         {recipe.title}
                       </h3>
                       <div
