@@ -20,7 +20,7 @@ export default function RecipeDetails({
         <Image
           src={imageUrl}
           alt="Food"
-          className="w-auto h-[60vh] mx-auto object-contain"
+          className="w-auto mx-auto object-contain"
           priority
           width={100}
           height={100}
@@ -72,8 +72,10 @@ export default function RecipeDetails({
         </div>
       </div>
       <div className="py-5 inline-flex items-center justify-center space-x-2">
-        <p className="text-gray-800 text-2xl font-extrabold">Cooking time:</p>
-        <span className="text-gray-600 text-2xl font-extrabold">
+        <p className="text-gray-800 md:text-2xl font-extrabold text-xl">
+          Cooking time:
+        </p>
+        <span className="text-gray-600 md:text-2xl font-extrabold">
           {timeFrame?.hours < 1
             ? `${timeFrame?.minutes} min`
             : timeFrame?.hours === 1
@@ -83,7 +85,9 @@ export default function RecipeDetails({
       </div>
       <p className="text-gray-600">{description}</p>
       <div className="pt-10">
-        <h1 className="text-4xl font-extrabold text-gray-800">Ingredients:</h1>
+        <h1 className="md:text-2xl text-xl font-extrabold text-gray-800">
+          Ingredients:
+        </h1>
         <Ingredients ingredients={ingredients} />
       </div>
       <Instructions instructions={instructions} />
