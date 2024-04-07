@@ -1,15 +1,37 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { AuthContext } from "../context/AuthContext";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function Brand({
-  state,
-  setState,
-}: {
-  state: boolean;
-  setState: Dispatch<SetStateAction<boolean>>;
-}) {
+  scrollToSection,
+  username,
+  setIsAuthenticated,
+  setUsername,
+}: any) {
+  const { isAuthenticated } = useContext(AuthContext);
+  const capitalizeFirstLetter = (str: string) => {
+    if (!str) return "";
+    return str?.charAt(0).toUpperCase() + str?.slice(1);
+  };
+  const router = useRouter();
+
+  const handleScroll = () => {
+    return setTimeout(() => {
+      scrollToSection();
+    }, 150);
+  };
+
   return (
     <div className="flex items-center justify-between py-5 md:block">
       <Link href="/">
@@ -37,24 +59,8 @@ export default function Brand({
         </svg>
       </Link>
       <div className="md:hidden">
-        <button
-          className="menu-btn text-gray-500 hover:text-gray-800"
-          onClick={() => setState(!state)}
-        >
-          {state ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          ) : (
+        <DropdownMenu>
+          <DropdownMenuTrigger>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -69,8 +75,74 @@ export default function Brand({
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-          )}
-        </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {isAuthenticated.includes("true") && (
+              <>
+                <DropdownMenuLabel>
+                  {capitalizeFirstLetter(username)}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+              </>
+            )}
+            <DropdownMenuItem>
+              <Link href={"/"}>Home</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/recipes"}>Recipes</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={"/create-recipe"}>Add recipes</Link>
+            </DropdownMenuItem>
+            {isAuthenticated.includes("true") ? (
+              <DropdownMenuItem>
+                <Link href={"/my-recipes"}>My recipes</Link>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem onClick={handleScroll}>
+                Newsletter
+              </DropdownMenuItem>
+            )}
+            {isAuthenticated.includes("true") ? (
+              <DropdownMenuItem
+                className="text-red-600"
+                onClick={() => {
+                  setIsAuthenticated("");
+                  setUsername("");
+                  Cookies.remove("currentUser");
+                  localStorage.removeItem("isAuthenticated");
+                  localStorage.removeItem("username");
+                  router.push("/login");
+                }}
+              >
+                <svg
+                  className="w-5 mr-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14 20H6C4.89543 20 4 19.1046 4 18L4 6C4 4.89543 4.89543 4 6 4H14M10 12H21M21 12L18 15M21 12L18 9"
+                    stroke="rgb(220 38 38 / var(--tw-text-opacity)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Sign out
+              </DropdownMenuItem>
+            ) : (
+              <>
+                <DropdownMenuItem>
+                  <Link href={"/login"}>Log in</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={"/signup"}>Sign up</Link>
+                </DropdownMenuItem>
+              </>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

@@ -90,7 +90,7 @@ export default function Login() {
               </p>
             </div>
           </div>
-          <div className="bg-white shadow p-4 py-6 sm:p-6 rounded-[15px] md:rounded-lg">
+          <div className="bg-white shadow p-4 py-6 sm:p-6 rounded-[15px] md:rounded-lg mx-3 md:mx-0">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="font-medium">Email</label>
