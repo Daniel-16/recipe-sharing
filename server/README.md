@@ -49,7 +49,7 @@ This is a simple recipe sharing application api built with Node.js, Express, and
 <!-- - `POST /api/users/login`: Authenticate a user and obtain a JWT token.
   - Required fields: `email`, `password` -->
 
-### Recipe
+### Recipes
 
 - `POST /api/createRecipe/`: Create a new recipe.
 
@@ -68,6 +68,11 @@ This is a simple recipe sharing application api built with Node.js, Express, and
 - `POST /api/subscribe`: Subscribe to email newsletters and updates
   - Required fields: `email`
 - `GET /api/userRecipes`: Get recipes of an authenticated user
+  - This endpoint requires authentication (JWT token in the `Authorization` header).
+- `DELETE api/recipe/:recipeId/delete`: Delete a single recipe
+  - This endpoint requires authentication (JWT token in the `Authorization` header).
+- `GET api/recipe/:recipeId`: Get a single recipe
+  - Replace `/:recipeId` with the created recipe's id.
   - This endpoint requires authentication (JWT token in the `Authorization` header).
 
 <!-- ## User Schema
