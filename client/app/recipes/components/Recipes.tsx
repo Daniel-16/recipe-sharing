@@ -93,7 +93,7 @@ export default function Recipes() {
   return (
     <>
       <div className="max-w-screen-lg mx-auto px-5">
-        <h1 className="px-5 text-3xl md:text-4xl text-gray-800 font-extrabold py-5">
+        <h1 className="md:px-5 text-3xl md:text-4xl text-gray-800 font-extrabold md:py-5 py-2">
           Explore Recipes
         </h1>
         <ul

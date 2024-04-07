@@ -21,7 +21,7 @@ export default function Section() {
         />
       </div>
       <div className="flex-none space-y-5 max-w-xl">
-        <h1 className="text-4xl text-gray-800 font-extrabold sm:text-5xl md:pt-10 pt-5">
+        <h1 className="text-3xl md:text-4xl text-gray-800 font-extrabold sm:text-5xl md:pt-10 pt-5">
           Share your Recipes
         </h1>
         <p className="text-gray-800">

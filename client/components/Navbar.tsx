@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="md:hidden mx-5 pb-5">
+      <div className="md:hidden mx-5 pb-2">
         <Brand
           scrollToSection={() => scrollToSection(section3)}
           username={username.toString()}
@@ -49,7 +49,7 @@ export default function Navbar() {
         />
       </div>
       <nav
-        className={`pb-5 md:text-sm ${
+        className={`pb-2 md:text-sm ${
           state
             ? "absolute top-0 inset-x-0 bg-white shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-0 md:mt-0 md:relative md:bg-transparent"
             : ""

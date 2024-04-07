@@ -38,7 +38,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      <ul className="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
+      <ul className="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0 text-sm">
         <li className=" hover:text-gray-800">
           <Link href="/">About us</Link>
         </li>
@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="mt-6 sm:mt-0">
           <ul className="flex items-center space-x-4">
             <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-              <Link href="https://github.com/Daniel-16/share-recipe">
+              <Link href="https://twitter.com/DanielToba19" target="_blank">
                 <svg
                   fill="none"
                   className="w-6 h-6"
@@ -70,7 +70,7 @@ export default function Footer() {
             </li>
 
             <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-              <Link href="https://twitter.com/DanielToba19">
+              <Link href="https://github.com/Daniel-16" target="_blank">
                 <svg
                   className="w-6 h-6"
                   viewBox="0 0 256 249"

@@ -4,7 +4,9 @@ export default function Instructions({ instructions }: any) {
   return (
     <>
       <div className="pt-10">
-        <h1 className="text-4xl font-extrabold text-gray-800">Instructions:</h1>
+        <h1 className="md:text-2xl text-xl font-extrabold text-gray-800">
+          Instructions:
+        </h1>
         <ul className="py-5 text-gray-600 space-y-5">
           {instructions?.map((instruction: any, index: number) => {
             return (
