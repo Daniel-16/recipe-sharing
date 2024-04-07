@@ -40,8 +40,13 @@ export default function Navbar() {
 
   return (
     <>
-      <div className={`md:hidden ${state ? "mx-2 pb-5" : "hidden"}`}>
-        <Brand state={state} setState={setState} />
+      <div className="md:hidden mx-5 pb-5">
+        <Brand
+          scrollToSection={() => scrollToSection(section3)}
+          username={username.toString()}
+          setIsAuthenticated={setIsAuthenticated}
+          setUsername={setUsername}
+        />
       </div>
       <nav
         className={`pb-5 md:text-sm ${
@@ -50,20 +55,17 @@ export default function Navbar() {
             : ""
         }`}
       >
-        <div className="gap-x-14 items-center max-w-screen-2xl mx-10 px-4 md:flex md:px-8">
-          <Brand state={state} setState={setState} />
-          <div
-            className={`flex-1 items-center mt-8 md:mt-0 md:flex ${
-              state ? "block" : "hidden"
-            } `}
-          >
+        <div className="gap-x-14 items-center max-w-screen-2xl mx-10 px-4 md:flex md:px-8 hidden">
+          <Brand
+            scrollToSection={() => scrollToSection(section3)}
+            username={username.toString()}
+            setIsAuthenticated={setIsAuthenticated}
+            setUsername={setUsername}
+          />
+          <div className="flex-1 items-center mt-8 md:mt-0 md:flex">
             <ul className="flex-1 justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
               <li className="text-gray-700 hover:text-gray-900">
-                <Link
-                  href="/"
-                  className="block"
-                  // onClick={() => setState(!state)}
-                >
+                <Link href="/" className="block">
                   Home
                 </Link>
               </li>
@@ -111,15 +113,9 @@ export default function Navbar() {
               {isAuthenticated.includes("true") ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger>
-                    {!state ? (
-                      <div className="rounded-full py-2 px-4 bg-gray-800 text-white text-lg font-bold">
-                        {username.charAt(0).toUpperCase()}
-                      </div>
-                    ) : (
-                      <div className="bg-gray-800 text-white py-2 pr-2 pl-2 rounded-lg">
-                        {username}
-                      </div>
-                    )}
+                    <div className="rounded-full py-2 px-4 bg-gray-800 text-white text-lg font-bold">
+                      {username.charAt(0).toUpperCase()}
+                    </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>{username}</DropdownMenuLabel>
