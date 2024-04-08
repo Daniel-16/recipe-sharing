@@ -18,22 +18,34 @@ const UserNameContext = createContext<UsernameContextData>({
 
 const UsernameProvider = ({ children }: UsernameProviderProps) => {
   const [username, setUsername] = useState<string | any>("");
+  // useEffect(() => {
+  //   localStorage.getItem("isAuthenticated");
+  //   const getCookies = Cookies.get("currentUser");
+  //   if (getCookies) {
+  //     setUsername(username);
+  //   }
+  //   // localStorage.removeItem("username");
+  // }, [username]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("username", username);
+  // }, [username]);
   useEffect(() => {
-    const auth = localStorage.getItem("isAuthenticated");
-    const getCookies = Cookies.get("currentUser");
-    if (auth == "true") {
-      setUsername(localStorage.getItem("username"));
-    } else {
-      localStorage.removeItem("username");
+    const savedUsername = localStorage.getItem("username");
+    if (savedUsername) {
+      setUsername(savedUsername);
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("username", username);
-  }, [username]);
+  const handleSetUsername = (value: string) => {
+    localStorage.setItem("username", value);
+    setUsername(value);
+  };
 
   return (
-    <UserNameContext.Provider value={{ username, setUsername }}>
+    <UserNameContext.Provider
+      value={{ username, setUsername: handleSetUsername }}
+    >
       {children}
     </UserNameContext.Provider>
   );

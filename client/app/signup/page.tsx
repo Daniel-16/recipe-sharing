@@ -42,6 +42,7 @@ export default function Signup() {
           process.env.NODE_ENV === "production"
         }; sameSite=strict`;
         const { username } = response.data.user;
+        localStorage.setItem("username", username);
         setIsAuthenticated("true");
         setUsername(username);
         // console.log(response.data);

@@ -7,18 +7,18 @@ export default function NetworkError({ error }: { error: any }) {
         </h3>
         <p className="text-gray-600">
           We&apos;re sorry, but we&apos;re unable to connect to the server at
-          the moment. This could be due to a variety of reasons, including:
+          the moment. This could be due to a variety of reasons
         </p>
-        <ul className="items-center text-gray-600">
+        {/* <ul className="items-center text-gray-600">
           <li>Your internet connection may be unstable or offline.</li>
           <li>The server may be experiencing technical difficulties.</li>
           <li>
             There may be a firewall or network restriction blocking the
             connection.
           </li>
-        </ul>
+        </ul> */}
         <p className="text-gray-600">
-          Please check your internet connection and try again later.
+          Please check your internet connection or try again later.
         </p>
         {/* <Link
             href="/"
