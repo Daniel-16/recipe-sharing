@@ -7,8 +7,12 @@ import mongoose from "mongoose";
  */
 const connectDB = async () => {
   try {
+    if (process.env.NODE_ENV === "production") {
+      await mongoose.connect(`${process.env.MONGODB_PROD}`);
+      console.log("Connected to MongoDB in production");
+    }
     await mongoose.connect(`${process.env.MONGODB_DEV}`);
-    console.log("Connected to MongoDB");
+    console.log("Connected to MongoDB in development");
   } catch (error) {
     throw new Error("Couldn't connect to DB", error);
   }
