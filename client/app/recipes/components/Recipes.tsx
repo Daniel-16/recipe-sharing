@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import NetworkError from "@/components/NetworkError";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ShareRecipe from "./ShareRecipe";
 
 interface VoteLoad {
   [recipeId: string]: boolean;
@@ -106,17 +107,20 @@ export default function Recipes() {
                   key={recipe._id}
                   className="w-full mx-auto group sm:max-w-sm border border-[#dcc5c9] rounded-[15px] hover:shadow-md duration-200"
                 >
-                  <Image
-                    src={recipe.imageUrl}
-                    priority
-                    alt={"Recipes"}
-                    className="w-full h-[40vh] rounded-t-lg object-cover hover:cursor-pointer"
-                    width={10}
-                    height={10}
-                    onClick={() => {
-                      router.push(`recipe/${recipe._id}`);
-                    }}
-                  />
+                  <div className="relative">
+                    <Image
+                      src={recipe.imageUrl}
+                      priority
+                      alt={"Recipes"}
+                      className="w-full h-[40vh] rounded-t-lg object-cover hover:cursor-pointer"
+                      width={10}
+                      height={10}
+                      onClick={() => {
+                        router.push(`recipe/${recipe._id}`);
+                      }}
+                    />
+                    <ShareRecipe link={recipe._id} />
+                  </div>
                   <div className="mt-3 space-y-2 px-3 pb-3">
                     <span className="block text-[#7e525f] text-sm">
                       {dateFormat(recipe.createdAt)}
