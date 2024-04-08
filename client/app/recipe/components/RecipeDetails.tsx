@@ -27,9 +27,9 @@ export default function RecipeDetails({
         />
       )}
       <div className="w-[20vh]">
-        <div className="border border-gray-300 items-center flex py-1 px-2 rounded-lg mt-3 hover:bg-gray-100 hover:cursor-pointer">
+        <div className="border border-gray-300 items-center w-[15vh] flex py-1 px-2 rounded-lg mt-3 hover:bg-gray-100 hover:cursor-pointer">
           <div
-            className="inline-flex items-center space-x-2"
+            className="inline-flex items-center justify-center space-x-2"
             onClick={handleVotes}
           >
             <svg
