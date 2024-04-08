@@ -207,7 +207,11 @@ export default function RecipePage({ params }: { params: { id: string } }) {
             instructions={recipe?.instructions}
             upvotes={recipe?.upvotes}
             handleVotes={() => handleVotes(recipe?._id)}
-            voteLoad={voteLoad}
+            voteLoad={
+              voteLoad[recipe?._id] !== undefined
+                ? voteLoad[recipe?._id]
+                : false
+            }
             recipeId={recipe?._id}
           />
         </div>
