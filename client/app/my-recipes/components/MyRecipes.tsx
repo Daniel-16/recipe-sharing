@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import RecipeFeatures from "./RecipeFeatures";
 import NetworkError from "@/components/NetworkError";
+import { useRouter } from "next/navigation";
 
 interface VoteLoad {
   [recipeId: string]: boolean;
@@ -18,6 +19,7 @@ export default function MyRecipes() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [voteLoad, setVoteLoad] = useState<VoteLoad>({});
+  const router = useRouter();
 
   useEffect(() => {
     setLoading(true);
@@ -176,9 +178,10 @@ export default function MyRecipes() {
                       src={recipe.imageUrl}
                       priority
                       alt={"Recipes"}
-                      className="w-full h-[40vh] rounded-t-lg object-cover"
+                      className="w-full h-[40vh] rounded-t-lg object-cover hover:cursor-pointer"
                       width={10}
                       height={10}
+                      onClick={() => router.push(`/recipe/${recipe._id}`)}
                     />
                     <RecipeFeatures
                       handleDelete={() => handleDelete(recipe._id)}
@@ -190,7 +193,10 @@ export default function MyRecipes() {
                       {dateFormat(recipe.createdAt)}
                     </span>
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg text-gray-800duration-150 group-hover:text-[#7e525f] font-semibold">
+                      <h3
+                        className="text-lg text-gray-800 duration-150 group-hover:text-[#7e525f] font-semibold hover:cursor-pointer"
+                        onClick={() => router.push(`recipe/${recipe._id}`)}
+                      >
                         {recipe.title}
                       </h3>
                       <div
@@ -235,7 +241,10 @@ export default function MyRecipes() {
                         </span>
                       </div>
                     </div>
-                    <p className="text-gray-600 text-sm duration-150 group-hover:text-gray-800">
+                    <p
+                      className="text-gray-600 group-hover:text-[#7e525f] text-sm duration-150 hover:cursor-pointer"
+                      onClick={() => router.push(`recipe/${recipe._id}`)}
+                    >
                       {recipe.description && recipe.description.length > 113
                         ? `${recipe.description.slice(0, 113)}...`
                         : recipe.description}
