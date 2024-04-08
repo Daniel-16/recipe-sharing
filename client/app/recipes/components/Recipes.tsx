@@ -25,7 +25,13 @@ export default function Recipes() {
     setLoading(true);
     const fetchRecipes = async () => {
       try {
-        const response = await Axios.get("http://localhost:7000/api/recipes");
+        let url;
+        if (process.env.NODE_ENV === "production") {
+          url = "https://recipe-sharing-942n.onrender.com";
+        } else {
+          url = "http://localhost:7000";
+        }
+        const response = await Axios.get(`${url}/api/recipes`);
         console.log(response.data.recipes);
         const { recipes } = response.data;
         setRecipes(recipes);
@@ -49,8 +55,14 @@ export default function Recipes() {
     // setVoteLoad(true);
     setVoteLoad((prevState) => ({ ...prevState, [recipeId]: true }));
     try {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
       const upvote = await Axios.put(
-        `http://localhost:7000/api/recipes/${recipeId}/upvote`,
+        `${url}/api/recipes/${recipeId}/upvote`,
         {},
         {
           headers: {
@@ -59,7 +71,7 @@ export default function Recipes() {
           },
         }
       );
-      const response = await Axios.get("http://localhost:7000/api/recipes");
+      const response = await Axios.get(`${url}/api/recipes`);
       const { recipes } = response.data;
       setRecipes(recipes);
       console.log(upvote.data);
