@@ -25,15 +25,18 @@ export default function MyRecipes() {
     setLoading(true);
     const fetchRecipes = async () => {
       try {
-        const response = await Axios.get(
-          "http://localhost:7000/api/userRecipes",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${Cookies.get("currentUser")}`,
-            },
-          }
-        );
+        let url;
+        if (process.env.NODE_ENV === "production") {
+          url = "https://recipe-sharing-942n.onrender.com";
+        } else {
+          url = "http://localhost:7000";
+        }
+        const response = await Axios.get(`${url}/api/userRecipes`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("currentUser")}`,
+          },
+        });
         console.log(response.data.recipes);
         const { recipes } = response.data;
         setRecipes(recipes);
@@ -57,8 +60,14 @@ export default function MyRecipes() {
     // setVoteLoad(true);
     setVoteLoad((prevState) => ({ ...prevState, [recipeId]: true }));
     try {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
       const upvote = await Axios.put(
-        `http://localhost:7000/api/recipes/${recipeId}/upvote`,
+        `${url}/api/recipes/${recipeId}/upvote`,
         {},
         {
           headers: {
@@ -67,15 +76,12 @@ export default function MyRecipes() {
           },
         }
       );
-      const response = await Axios.get(
-        "http://localhost:7000/api/userRecipes",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${Cookies.get("currentUser")}`,
-          },
-        }
-      );
+      const response = await Axios.get(`${url}/api/userRecipes`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("currentUser")}`,
+        },
+      });
       const { recipes } = response.data;
       setRecipes(recipes);
       console.log(upvote.data);
@@ -89,26 +95,32 @@ export default function MyRecipes() {
 
   const handleDelete = async (recipeId: any) => {
     try {
-      await Axios.delete(
-        `http://localhost:7000/api/recipe/${recipeId}/delete`,
-        {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
+      await Axios.delete(`${url}/api/recipe/${recipeId}/delete`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${Cookies.get("currentUser")}`,
+        },
+      });
+      try {
+        setLoading(true);
+        let url;
+        if (process.env.NODE_ENV === "production") {
+          url = "https://recipe-sharing-942n.onrender.com";
+        } else {
+          url = "http://localhost:7000";
+        }
+        const response = await Axios.get(`${url}/api/userRecipes`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${Cookies.get("currentUser")}`,
           },
-        }
-      );
-      try {
-        setLoading(true);
-        const response = await Axios.get(
-          "http://localhost:7000/api/userRecipes",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${Cookies.get("currentUser")}`,
-            },
-          }
-        );
+        });
         const { recipes } = response.data;
         setRecipes(recipes);
         setLoading(false);

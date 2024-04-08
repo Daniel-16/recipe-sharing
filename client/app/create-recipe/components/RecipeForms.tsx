@@ -36,8 +36,14 @@ export default function RecipeForm() {
     setLoading(true);
     e.preventDefault();
     try {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
       const createRecipe = await Axios.post(
-        "http://localhost:7000/api/createRecipe",
+        `${url}/api/createRecipe`,
         {
           title: recipeTitle,
           imageUrl: previewImgData,

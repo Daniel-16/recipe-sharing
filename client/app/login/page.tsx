@@ -30,8 +30,14 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
       const response = await Axios.post(
-        "http://localhost:7000/api/login",
+        `${url}/api/login`,
         {
           email,
           password,

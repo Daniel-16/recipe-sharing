@@ -31,8 +31,14 @@ export default function NewsLetter() {
     e.preventDefault();
     setLoading(true);
     try {
+      let url;
+      if (process.env.NODE_ENV === "production") {
+        url = "https://recipe-sharing-942n.onrender.com";
+      } else {
+        url = "http://localhost:7000";
+      }
       const subscribe = await Axios.post(
-        "http://localhost:7000/api/subscribe",
+        `${url}/api/subscribe`,
         {
           email,
         },
