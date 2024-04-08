@@ -182,6 +182,7 @@ export default function MyRecipes() {
                     />
                     <RecipeFeatures
                       handleDelete={() => handleDelete(recipe._id)}
+                      link={recipe._id}
                     />
                   </div>
                   <div className="mt-3 space-y-2 px-3 pb-3">
