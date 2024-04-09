@@ -42,7 +42,7 @@ function Home() {
                       a delicious journey of shared culinary experiences.
                     </p>
                     <div className="flex items-center gap-x-3 sm:text-sm">
-                      <Link
+                      <a
                         href="/recipes"
                         className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
                       >
@@ -59,7 +59,7 @@ function Home() {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </Link>
+                      </a>
                     </div>
                   </div>
                   <div className="flex-1 hidden md:block">

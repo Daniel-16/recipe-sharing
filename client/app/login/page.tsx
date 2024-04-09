@@ -57,6 +57,7 @@ export default function Login() {
         setIsAuthenticated("true");
         setLoading(false);
         router.push("/");
+        router.refresh();
       }
       console.log(response.data);
     } catch (error) {

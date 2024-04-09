@@ -11,6 +11,7 @@ export default function UserRecipes() {
     const currentUser = Cookies.get("currentUser");
     if (!currentUser) {
       router.push("/login");
+      router.refresh();
     }
   }, [router]);
   return (

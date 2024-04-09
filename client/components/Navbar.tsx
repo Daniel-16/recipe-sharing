@@ -70,23 +70,20 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
-                <Link href={"/recipes"}>
+                <a href={"/recipes"}>
                   <div className="block hover:cursor-pointer">Recipes</div>
-                </Link>
+                </a>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
-                <Link href={"/create-recipe"}>
+                <a href={"/create-recipe"}>
                   <div className="block hover:cursor-pointer">Add recipes</div>
-                </Link>
+                </a>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
                 {isAuthenticated.includes("true") ? (
-                  <Link
-                    href="/my-recipes"
-                    className="block hover:cursor-pointer"
-                  >
+                  <a href="/my-recipes" className="block hover:cursor-pointer">
                     My recipes
-                  </Link>
+                  </a>
                 ) : (
                   <div
                     className="block hover:cursor-pointer"
