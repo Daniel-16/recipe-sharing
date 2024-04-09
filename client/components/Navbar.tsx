@@ -12,15 +12,16 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { AuthContext } from "@/context/AuthContext";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { UserNameContext } from "@/context/UsernameContext";
+import Cookies from "js-cookie";
 
 export default function Navbar() {
   const [state, setState] = useState(false);
   const { section3 } = useContext(SectionContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const { username, setUsername } = useContext(UserNameContext);
-  // const router = useRouter();
+  const router = useRouter();
 
   const scrollToSection = (ref: RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -111,36 +112,33 @@ export default function Navbar() {
                       {capitalizeFirstLetter(username)}
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <Link href={"/login"}>
-                      <DropdownMenuItem
-                        className="text-red-600"
-                        onClick={() => {
-                          setIsAuthenticated("");
-                          setUsername("");
-                          document.cookie = `currentUser=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; secure-${
-                            process.env.NODE_ENV === "production"
-                          }; sameSite=strict`;
-                          localStorage.removeItem("isAuthenticated");
-                          localStorage.removeItem("username");
-                        }}
+                    <DropdownMenuItem
+                      className="text-red-600"
+                      onClick={() => {
+                        setIsAuthenticated("");
+                        setUsername("");
+                        Cookies.remove("currentUser");
+                        localStorage.removeItem("isAuthenticated");
+                        localStorage.removeItem("username");
+                        router.push("/login");
+                      }}
+                    >
+                      <svg
+                        className="w-5 mr-2"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <svg
-                          className="w-5 mr-2"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M14 20H6C4.89543 20 4 19.1046 4 18L4 6C4 4.89543 4.89543 4 6 4H14M10 12H21M21 12L18 15M21 12L18 9"
-                            stroke="rgb(220 38 38 / var(--tw-text-opacity)"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        Sign out
-                      </DropdownMenuItem>
-                    </Link>
+                        <path
+                          d="M14 20H6C4.89543 20 4 19.1046 4 18L4 6C4 4.89543 4.89543 4 6 4H14M10 12H21M21 12L18 15M21 12L18 9"
+                          stroke="rgb(220 38 38 / var(--tw-text-opacity)"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      Sign out
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
