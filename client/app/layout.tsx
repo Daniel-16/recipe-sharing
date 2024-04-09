@@ -11,7 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Cook",
-  description: "Web app for sharing recipes",
+  description:
+    "Explore a vibrant community of food enthusiasts, share unique recipes, and inspire others on our recipe sharing app. Join us, whether you're a seasoned chef or a passionate home cook, for a delightful culinary journey.",
 };
 
 export default function RootLayout({
@@ -21,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body
         className={inter.className}
         style={{
