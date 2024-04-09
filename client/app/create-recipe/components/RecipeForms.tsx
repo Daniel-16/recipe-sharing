@@ -62,6 +62,7 @@ export default function RecipeForm() {
       console.log(createRecipe);
       setLoading(false);
       router.push("/recipes");
+      router.refresh();
     } catch (error) {
       console.log(error);
       setLoading(false);
