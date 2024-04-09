@@ -6,6 +6,7 @@ import Axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import { UserNameContext } from "@/context/UsernameContext";
+import Cookies from "js-cookie";
 
 export default function Signup() {
   const [username, setInputUsername] = useState("");
@@ -44,9 +45,7 @@ export default function Signup() {
       );
 
       if (response.data.token) {
-        document.cookie = `currentUser=${response.data.token}; path=/; secure-${
-          process.env.NODE_ENV === "production"
-        }; sameSite=strict`;
+        Cookies.set("currentUser", response.data.token)
         const { username } = response.data.user;
         localStorage.setItem("username", username);
         setIsAuthenticated("true");

@@ -30,6 +30,13 @@ export default function RecipePage({ params }: { params: { id: string } }) {
   const router = useRouter();
 
   useEffect(() => {
+    const currentUser = Cookies.get("currentUser");
+    if (!currentUser) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  useEffect(() => {
     setLoading(true);
     const fetchRecipe = async () => {
       try {
