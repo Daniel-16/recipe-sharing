@@ -78,7 +78,7 @@ export default function ShareRecipe({ link }: any) {
               <Label className="sr-only">Link</Label>
               <Input
                 id="link"
-                defaultValue={`http://localhost:3000/recipe/${link}`}
+                defaultValue={`https://cookandshare.vercel.app/recipe/${link}`}
                 readOnly
               />
             </div>
