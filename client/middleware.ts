@@ -17,7 +17,8 @@ export function middleware(request: NextRequest) {
     if (
       !request.nextUrl.pathname.startsWith("/login") &&
       !request.nextUrl.pathname.startsWith("/signup") &&
-      !request.nextUrl.pathname.endsWith("/")
+      !request.nextUrl.pathname.endsWith("/") &&
+      request.nextUrl.pathname.match("/^/recipe/w+$/")
     ) {
       // If the user is trying to access any page other than /login or /signup, redirect to /login
       return Response.redirect(new URL("/login", request.url));

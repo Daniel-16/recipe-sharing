@@ -20,7 +20,7 @@ export default function RecipeDetails({
         <Image
           src={imageUrl}
           alt="Food"
-          className="w-auto mx-auto object-contain md:h-[80vh]"
+          className="w-auto mx-auto object-contain lg:h-[80vh]"
           priority
           width={100}
           height={100}

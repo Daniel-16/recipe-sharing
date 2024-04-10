@@ -5,7 +5,7 @@ export default function Footer() {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <footer className="text-gray-500 bg-[#f5f5f5] px-4 py-5 mx-auto md:px-8 w-full">
+    <footer className="text-gray-500 bg-[#f5f5f5] px-4 py-5 mx-auto lg:px-8 w-full">
       <div className="max-w-xl sm:mx-auto sm:text-center">
         <div className="flex-col items-center justify-center">
           <svg
