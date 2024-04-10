@@ -10,18 +10,18 @@ export default function Section() {
   return (
     <div
       ref={section1}
-      className="max-w-screen-lg mx-auto px-4 md:flex py-24 md:space-x-20 md:justify-center md:items-center md:px-4 overflow-hidden"
+      className="max-w-screen-lg mx-auto px-4 lg:flex py-24 lg:space-x-20 lg:justify-center lg:items-center lg:px-4 overflow-hidden"
     >
-      <div className="max-w-sm p-5 md:p-0">
+      <div className="max-w-sm p-5 lg:p-0">
         <Image
           src={snapFood}
           alt="Snap food"
-          className="rounded-tr-[108px] rounded-bl-[108px] md:w-auto md:h-1/2"
+          className="rounded-tr-[108px] rounded-bl-[108px] lg:w-auto lg:h-1/2"
           priority
         />
       </div>
       <div className="flex-none space-y-5 max-w-xl">
-        <h1 className="text-3xl md:text-4xl text-gray-800 font-extrabold sm:text-5xl md:pt-10 pt-5">
+        <h1 className="text-3xl lg:text-4xl text-gray-800 font-extrabold lg:pt-10 pt-5">
           Share your Recipes
         </h1>
         <p className="text-gray-800">
@@ -33,7 +33,7 @@ export default function Section() {
         <div className="flex items-center gap-x-3 sm:text-sm">
           <Link
             href="/create-recipe"
-            className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
+            className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full lg:inline-flex"
           >
             Create a recipe
             <svg

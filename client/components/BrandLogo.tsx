@@ -33,7 +33,7 @@ export default function Brand({
   };
 
   return (
-    <div className="flex items-center justify-between py-5 md:block">
+    <div className="flex items-center justify-between py-5 lg:inline">
       <Link href="/">
         <svg
           // width="150"
@@ -58,7 +58,7 @@ export default function Brand({
           />
         </svg>
       </Link>
-      <div className="md:hidden">
+      <div className="lg:hidden mt-0 inset-y-0">
         <DropdownMenu>
           <DropdownMenuTrigger>
             <svg

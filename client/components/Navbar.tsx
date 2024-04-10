@@ -17,7 +17,6 @@ import { UserNameContext } from "@/context/UsernameContext";
 import Cookies from "js-cookie";
 
 export default function Navbar() {
-  const [state, setState] = useState(false);
   const { section3 } = useContext(SectionContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const { username, setUsername } = useContext(UserNameContext);
@@ -40,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="md:hidden mx-5 pb-2">
+      <div className="lg:hidden mx-5 pb-0">
         <Brand
           scrollToSection={() => scrollToSection(section3)}
           username={username.toString()}
@@ -49,21 +48,17 @@ export default function Navbar() {
         />
       </div>
       <nav
-        className={`pb-2 md:text-sm ${
-          state
-            ? "absolute top-0 inset-x-0 bg-white shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-0 md:mt-0 md:relative md:bg-transparent"
-            : ""
-        }`}
+        className={`pb-2 lg:text-sm absolute top-0 inset-x-0 bg-white shadow-lg rounded-xl border mx-2 mt-2 lg:shadow-none lg:border-none lg:mx-0 lg:mt-0 lg:relative lg:bg-transparent hidden lg:inline`}
       >
-        <div className="gap-x-14 items-center max-w-screen-2xl mx-10 px-4 md:flex md:px-8 hidden">
+        <div className="gap-x-14 items-center max-w-screen-2xl mx-10 px-4 lg:flex lg:px-8 hidden">
           <Brand
             scrollToSection={() => scrollToSection(section3)}
             username={username.toString()}
             setIsAuthenticated={setIsAuthenticated}
             setUsername={setUsername}
           />
-          <div className="flex-1 items-center mt-8 md:mt-0 md:flex">
-            <ul className="flex-1 justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+          <div className="flex-1 items-center mt-8 lg:mt-0 lg:flex">
+            <ul className="flex-1 justify-center items-center space-y-6 lg:flex lg:space-x-6 lg:space-y-0">
               <li className="text-gray-700 hover:text-gray-900">
                 <Link href="/" className="block">
                   Home
@@ -140,10 +135,10 @@ export default function Navbar() {
                 </DropdownMenu>
               ) : (
                 <>
-                  <div className="items-center justify-end mt-6 space-y-6 space-x-4 md:inline-flex md:mt-0">
+                  <div className="items-center justify-end mt-6 space-y-6 space-x-4 lg:inline-flex lg:mt-0">
                     <Link
                       href="/login"
-                      className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
+                      className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full lg:inline-flex"
                     >
                       Log in
                       <svg
@@ -160,10 +155,10 @@ export default function Navbar() {
                       </svg>
                     </Link>
                   </div>
-                  <div className="items-center justify-end mt-6 space-y-6 space-x-4 md:inline-flex md:mt-0">
+                  <div className="items-center justify-end mt-6 space-y-6 space-x-4 lg:inline-flex lg:mt-0">
                     <Link
                       href="/signup"
-                      className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
+                      className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full lg:inline-flex"
                     >
                       Sign up
                       <svg

@@ -1,7 +1,7 @@
 export default function Sponsors() {
   return (
     <div className="py-14">
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
         <h3 className="font-semibold text-sm text-gray-600 text-center">
           Sponsored by restaraunts from around the world
         </h3>

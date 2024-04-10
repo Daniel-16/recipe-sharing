@@ -83,21 +83,21 @@ export default function RecipeBlogs() {
     numCols = 2;
   }
   return (
-    <div className="max-w-screen-lg mx-auto mb-10 px-5 md:px-0">
+    <div className="max-w-screen-lg mx-auto mb-10 px-4 lg:px-0">
       <Link
         href="/recipes"
-        className="flex justify-end items-center pr-6 pb-3 hover:cursor-pointer text-[#7e525f] hover:text-[#986673] focus:text-[#7e525f]"
+        className="flex justify-end items-center pb-3 hover:cursor-pointer text-[#7e525f] hover:text-[#986673] focus:text-[#7e525f]"
       >
         <p className="font-extrabold text-lg">View more</p>
       </Link>
       <ul
-        className={`grid gap-x-8 md:gap-x-2 lg:gap-x-8 gap-y-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-${numCols} mb-5`}
+        className={`grid gap-x-8 lg:gap-x-8 gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-${numCols} mb-5`}
       >
         {recipes.map((recipe: any) => {
           return (
             <li
               key={recipe._id}
-              className="w-full mx-auto group sm:max-w-sm border border-[#dcc5c9] rounded-[15px] hover:shadow-md duration-200"
+              className="w-full mx-auto group max-w-sm border border-[#dcc5c9] rounded-[15px] hover:shadow-md duration-200"
             >
               <Image
                 src={recipe.imageUrl}
