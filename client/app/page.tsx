@@ -1,9 +1,7 @@
 "use client";
-// import { useState} from "react";
 import Image from "next/image";
 import foodMain from "../assets/michele-blackwell-rAyCBQTH7ws-unsplash.jpg";
 import Link from "next/link";
-import Brand from "@/components/BrandLogo";
 import Section from "@/components/Section";
 import Recipes from "@/components/Recipes";
 import RecipeBlogs from "@/components/RecipeBlogs";
@@ -14,11 +12,9 @@ import Navbar from "@/components/Navbar";
 import { SectionProvider } from "@/context/SectionContext";
 import { Suspense } from "react";
 import Loading from "./loading";
-// import useScrollToTop from "@/hooks/useScrollTop";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 function Home() {
-  // useScrollToTop();
   return (
     <Suspense fallback={<Loading />}>
       <div className="relative">
