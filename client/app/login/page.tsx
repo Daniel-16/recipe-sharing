@@ -1,7 +1,5 @@
 "use client";
-import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 import Link from "next/link";
 import Axios, { AxiosError } from "axios";
 import { useContext, useState } from "react";
