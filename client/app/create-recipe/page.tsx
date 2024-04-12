@@ -24,9 +24,6 @@ export default function CreateRecipe() {
           <h1 className="text-2xl text-gray-800 font-extrabold md:text-4xl">
             Create new recipe
           </h1>
-          {/* <button className="bg-[#7e525f] text-white py-2 px-4 rounded-lg shadow-md hover:bg-[#986673]">
-            Create recipe
-          </button> */}
         </div>
         <Separator className="my-5" />
         <RecipeForm />
