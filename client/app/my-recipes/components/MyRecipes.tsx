@@ -1,6 +1,6 @@
 "use client";
 import Axios, { AxiosError } from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import { dateFormat } from "@/utils/dateFormat";
@@ -57,7 +57,6 @@ export default function MyRecipes() {
   }, []);
 
   const handleVotes = async (recipeId: any) => {
-    // setVoteLoad(true);
     setVoteLoad((prevState) => ({ ...prevState, [recipeId]: true }));
     try {
       let url;
@@ -85,7 +84,6 @@ export default function MyRecipes() {
       const { recipes } = response.data;
       setRecipes(recipes);
       console.log(upvote.data);
-      // setVoteLoad(false);
       setVoteLoad((prevState) => ({ ...prevState, [recipeId]: false }));
     } catch (error) {
       console.error(error);
