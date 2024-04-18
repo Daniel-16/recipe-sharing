@@ -9,8 +9,6 @@ export default function AddIngredients({
   ingredients: string[];
   setIngredients: Dispatch<SetStateAction<string[]>>;
 }) {
-  // const [ingredients, setIngredients] = useState([""]);
-
   const handleAddIngredient = () => {
     setIngredients([...ingredients, ""]);
   };
