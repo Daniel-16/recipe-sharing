@@ -1,5 +1,4 @@
 import UserModel from "../models/UserModel.js";
-// import RecipeModel from "../models/RecipeModel.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../utils/generateToken.js";
 import NewsLetterModel from "../models/NewsletterModel.js";
