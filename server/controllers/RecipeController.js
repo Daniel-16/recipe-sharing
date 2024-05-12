@@ -47,7 +47,7 @@ export const createRecipe = async (req, res) => {
  * Retrieves all recipes from the database.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
- * @returns {Object} A JSON response containing an array of recipes.
+ * @returns {Object} Array of recipes.
  */
 export const getAllRecipes = async (req, res) => {
   try {
