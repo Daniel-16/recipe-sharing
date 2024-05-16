@@ -1,11 +1,18 @@
 "use client";
 
+import { Dispatch, SetStateAction } from "react";
+
 export default function CookingTime({
   hours,
   minutes,
   setHours,
   setMinutes,
-}: any) {
+}: {
+  hours: string;
+  minutes: string;
+  setHours: Dispatch<SetStateAction<string>>;
+  setMinutes: Dispatch<SetStateAction<string>>;
+}) {
   return (
     <>
       <div className="inline-flex items-center gap-4 w-full">
