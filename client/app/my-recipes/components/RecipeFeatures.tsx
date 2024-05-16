@@ -35,7 +35,7 @@ import { Copy } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function RecipeFeatures({ handleDelete, link }: any) {
-  const [copied, setCopied] = useState("");
+  const [copied, setCopied] = useState<string>("");
   const copyToClipBoard = () => {
     const linkInput: any = document.getElementById("link");
     linkInput.select();
