@@ -9,8 +9,8 @@ import { UserNameContext } from "@/context/UsernameContext";
 import Cookies from "js-cookie";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
   const { setIsAuthenticated } = useContext(AuthContext);
   const { setUsername } = useContext(UserNameContext);
