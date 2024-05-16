@@ -15,7 +15,7 @@ interface VoteLoad {
 }
 
 export default function Recipes() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<never[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [voteLoad, setVoteLoad] = useState<VoteLoad>({});
