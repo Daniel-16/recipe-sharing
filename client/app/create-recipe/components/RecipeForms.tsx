@@ -12,10 +12,10 @@ import { useRouter } from "next/navigation";
 export default function RecipeForm() {
   const [recipeTitle, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [ingredients, setIngredients] = useState([""]);
-  const [instructions, setInstructions] = useState([""]);
-  const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
+  const [ingredients, setIngredients] = useState<string[]>([""]);
+  const [instructions, setInstructions] = useState<string[]>([""]);
+  const [hours, setHours] = useState<string>("");
+  const [minutes, setMinutes] = useState<string>("");
   const [previewImgData, setPreviewImgData] = useState<string | null>(null);
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
