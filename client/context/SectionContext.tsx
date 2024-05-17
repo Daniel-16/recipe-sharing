@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useRef, MutableRefObject, RefObject } from "react";
+import { createContext, useRef, RefObject } from "react";
 
 interface SectionRefs {
   section1: RefObject<HTMLDivElement>;

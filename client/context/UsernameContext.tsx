@@ -1,6 +1,5 @@
 "use client";
 import { ReactNode, createContext, useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 interface UsernameContextData {
   username: string;
@@ -18,18 +17,6 @@ const UserNameContext = createContext<UsernameContextData>({
 
 const UsernameProvider = ({ children }: UsernameProviderProps) => {
   const [username, setUsername] = useState<string | any>("");
-  // useEffect(() => {
-  //   localStorage.getItem("isAuthenticated");
-  //   const getCookies = Cookies.get("currentUser");
-  //   if (getCookies) {
-  //     setUsername(username);
-  //   }
-  //   // localStorage.removeItem("username");
-  // }, [username]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("username", username);
-  // }, [username]);
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
     if (savedUsername) {
