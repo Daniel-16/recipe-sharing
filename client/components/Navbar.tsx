@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Brand from "./BrandLogo";
-import { useState, useContext, RefObject } from "react";
+import { useContext, RefObject } from "react";
 import { SectionContext } from "@/context/SectionContext";
 import {
   DropdownMenu,
