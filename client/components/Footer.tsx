@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
-  const date = new Date();
-  const year = date.getFullYear();
+  const date: Date = new Date();
+  const year: number = date.getFullYear();
   return (
     <footer className="text-gray-500 bg-[#f5f5f5] px-4 py-5 mx-auto lg:px-8 w-full">
       <div className="max-w-xl sm:mx-auto sm:text-center">

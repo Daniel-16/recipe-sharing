@@ -9,9 +9,9 @@ import { UserNameContext } from "@/context/UsernameContext";
 import Cookies from "js-cookie";
 
 export default function Signup() {
-  const [username, setInputUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setInputUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<String | null>(null);
   const [passwordHidden, setPasswordHidden] = useState<boolean>(true);
@@ -45,7 +45,7 @@ export default function Signup() {
       );
 
       if (response.data.token) {
-        Cookies.set("currentUser", response.data.token)
+        Cookies.set("currentUser", response.data.token);
         const { username } = response.data.user;
         localStorage.setItem("username", username);
         setIsAuthenticated("true");
