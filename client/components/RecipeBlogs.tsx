@@ -13,7 +13,7 @@ interface VoteLoad {
 }
 
 export default function RecipeBlogs() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<never[]>([]);
   const [voteLoad, setVoteLoad] = useState<VoteLoad>({});
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
@@ -29,8 +29,7 @@ export default function RecipeBlogs() {
         }
         const response = await Axios.get(`${url}/api/recipes`);
         const { recipes } = response.data;
-        // console.log(recipes.slice(0, 6));
-        //Set the state to the first six recipes
+        // Set the state to the first six recipes
         setRecipes(recipes.slice(0, 6));
       } catch (error) {
         console.error(error);
