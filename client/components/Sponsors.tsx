@@ -3,7 +3,7 @@ export default function Sponsors() {
     <div className="py-14">
       <div className="max-w-screen-xl mx-auto px-4 lg:px-8">
         <h3 className="font-semibold text-sm text-gray-600 text-center">
-          Sponsored by restaraunts from around the world
+          Sponsored by restaraunts from around the world.
         </h3>
         <div className="mt-6">
           <ul className="flex gap-x-10 gap-y-6 flex-wrap items-center justify-center md:gap-x-16">
