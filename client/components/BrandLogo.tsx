@@ -36,8 +36,6 @@ export default function Brand({
     <div className="flex items-center justify-between py-5 lg:inline">
       <Link href="/">
         <svg
-          // width="150"
-          // height="65"
           className="w-[23vh]"
           viewBox="0 0 210 73"
           fill="none"
