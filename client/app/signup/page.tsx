@@ -45,14 +45,14 @@ export default function Signup() {
       );
 
       if (response.data.token) {
-        Cookies.set("currentUser", response.data.token);
-        const { username } = response.data.user;
-        localStorage.setItem("username", username);
-        setIsAuthenticated("true");
-        setUsername(username);
+        // Cookies.set("currentUser", response.data.token);
+        // const { username } = response.data.user;
+        // localStorage.setItem("username", username);
+        // setIsAuthenticated("true");
+        // setUsername(username);
         // console.log(response.data);
         setLoading(false);
-        router.push("/");
+        router.push("/login");
       }
     } catch (error) {
       setLoading(false);
