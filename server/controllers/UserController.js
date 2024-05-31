@@ -19,6 +19,14 @@ export const createUser = async (req, res) => {
     });
   }
   try {
+    const checkEmail = await UserModel.findOne({ email });
+    if (checkEmail) {
+      return res.status(409).json({
+        success: false,
+        error:
+          "A user with this email already exists. Please use a different email.",
+      });
+    }
     const user = await UserModel.create({
       username,
       email,
