@@ -19,6 +19,7 @@ export const createUser = async (req, res) => {
     });
   }
   try {
+    // Check if the email already exists
     const checkEmail = await UserModel.findOne({ email });
     if (checkEmail) {
       return res.status(409).json({
