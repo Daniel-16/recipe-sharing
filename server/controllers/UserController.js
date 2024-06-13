@@ -25,7 +25,7 @@ export const createUser = async (req, res) => {
       return res.status(409).json({
         success: false,
         error:
-          "A user with this email already exists. Please use a different email.",
+          "A user with this email already exist. Please use a different email.",
       });
     }
     const user = await UserModel.create({
