@@ -33,7 +33,7 @@ export default function CookingTime({
         />
       </div>
       <p className="text-sm text-gray-500 pt-2">
-        How long does it take to cook this recipe
+        How long does it take to cook this recipe?
       </p>
     </>
   );
