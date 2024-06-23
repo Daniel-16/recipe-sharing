@@ -106,7 +106,6 @@ export const upVoteRecipe = async (req, res) => {
     await recipe.save();
     res.status(200).json({
       success: true,
-      // votedUsers: updateRecipe,
       votes: "Upvoted this recipe",
     });
   } catch (error) {
