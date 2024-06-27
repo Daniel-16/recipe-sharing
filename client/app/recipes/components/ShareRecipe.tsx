@@ -20,7 +20,7 @@ export default function ShareRecipe({ link }: any) {
     const linkInput: any = document.getElementById("link");
     linkInput.select();
     navigator.clipboard.writeText(linkInput.value);
-    setCopied("Link copied to clipboard");
+    setCopied("Link copied to clipboard!");
   };
   useEffect(() => {
     setTimeout(() => {
