@@ -5,6 +5,7 @@ import mongoose from "mongoose";
  * @returns {Promise<void>} A promise that resolves once the connection is established.
  * @throws {Error} If the connection to the database fails.
  */
+
 const connectDB = async () => {
   try {
     if (process.env.NODE_ENV === "production") {
