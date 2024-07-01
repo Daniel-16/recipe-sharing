@@ -10,6 +10,7 @@ import UserModel from "../models/UserModel.js";
  * @param {function} next - The next middleware function in the request-response cycle.
  * @returns {void} - Does not return a value directly, but may modify the request object or send a response.
  */
+
 export const authenticateUser = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
