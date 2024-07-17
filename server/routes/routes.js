@@ -12,6 +12,7 @@ import {
   getRecipeVotes,
   getUserRecipes,
   upVoteRecipe,
+  updateRecipe
 } from "../controllers/RecipeController.js";
 import { authenticateUser } from "../middleware/authenticateUser.js";
 const router = express.Router();
@@ -122,5 +123,17 @@ router.delete("/recipe/:recipeId/delete", authenticateUser, deleteRecipe);
  * @param {function} middleware
  */
 router.get("/recipe/:recipeId", authenticateUser, getRecipe);
+
+/**
+ * Route for updating a recipe
+ * PUT /recipe/:recipeId/update
+ * @name updateRecipe
+ * @memberof router
+ * @function
+ * @inner
+ * @param {string} path - Express path.
+ * @param {callback} middleware - Express middleware.
+ */
+router.put("/recipe/:recipeId/update", authenticateUser, updateRecipe);
 
 export default router;
