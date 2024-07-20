@@ -236,3 +236,26 @@ export const getRecipe = async (req, res) => {
     });
   }
 };
+
+
+export const updateRecipe = async (req, res) => {
+  const { recipeId } = req.params;
+  const { title, imageUrl, description, timeFrame, ingredients, instructions } = req.body;
+
+  try {
+    // Find the recipe by ID and update it
+    const updatedRecipe = await RecipeModel.findByIdAndUpdate(
+      recipeId,
+      { title, imageUrl, description, timeFrame, ingredients, instructions },
+      { new: true, runValidators: true } // Options to return the updated document and run validation
+    );
+
+    if (!updatedRecipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+
+    res.status(200).json({ message: "Recipe updated successfully", updatedRecipe });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred while updating the recipe", error });
+  }
+};
