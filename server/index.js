@@ -14,6 +14,7 @@ app.use("/api", router);
 app.use(errorMiddleware);
 
 const port = process.env.PORT || 7000;
+
 try {
   await connectDB();
   app.listen(port, () => {
