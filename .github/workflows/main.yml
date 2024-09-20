@@ -26,8 +26,8 @@ jobs:
       - name: Build client
         run: npm run build --if-present
 
-      - name: Run format
-        run: npm run format
+      #   - name: Run format
+      #     run: npm run format
 
       - name: Run lint
         run: npm run lint
