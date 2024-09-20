@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const RecipeSchema = new mongoose.Schema(
   {
     recipeOwnerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     recipeOwner: {
       type: mongoose.Schema.Types.String,
-      ref: "User",
+      ref: 'User',
     },
     title: {
       type: String,
@@ -34,10 +34,10 @@ const RecipeSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   },
   { timestamps: true }
 );
 
-const RecipeModel = mongoose.model("Recipe", RecipeSchema);
+const RecipeModel = mongoose.model('Recipe', RecipeSchema);
 export default RecipeModel;

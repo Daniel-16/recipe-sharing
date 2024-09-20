@@ -1,7 +1,7 @@
-import UserModel from "../models/UserModel.js";
-import bcrypt from "bcrypt";
-import { generateToken } from "../utils/generateToken.js";
-import NewsLetterModel from "../models/NewsletterModel.js";
+import UserModel from '../models/UserModel.js';
+import bcrypt from 'bcrypt';
+import { generateToken } from '../utils/generateToken.js';
+import NewsLetterModel from '../models/NewsletterModel.js';
 
 /**
  * Creates a new user.
@@ -15,7 +15,7 @@ export const createUser = async (req, res) => {
   if (password.length < 6) {
     return res.status(400).json({
       success: false,
-      error: "Password must be at least 6 characters long.",
+      error: 'Password must be at least 6 characters long.',
     });
   }
   try {
@@ -25,7 +25,7 @@ export const createUser = async (req, res) => {
       return res.status(409).json({
         success: false,
         error:
-          "A user with this email already exist! Please use a different email.",
+          'A user with this email already exist! Please use a different email.',
       });
     }
     const user = await UserModel.create({
@@ -61,7 +61,7 @@ export const loginUser = async (req, res) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        error: "Invalid email or password",
+        error: 'Invalid email or password',
       });
     }
     //Match passwords
@@ -69,7 +69,7 @@ export const loginUser = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({
         success: false,
-        error: "Invalid email or password",
+        error: 'Invalid email or password',
       });
     }
     const token = generateToken({ userId: user._id });

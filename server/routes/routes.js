@@ -1,9 +1,9 @@
-import express from "express";
+import express from 'express';
 import {
   createUser,
   loginUser,
   subscribe,
-} from "../controllers/UserController.js";
+} from '../controllers/UserController.js';
 import {
   createRecipe,
   deleteRecipe,
@@ -12,9 +12,9 @@ import {
   getRecipeVotes,
   getUserRecipes,
   upVoteRecipe,
-  updateRecipe
-} from "../controllers/RecipeController.js";
-import { authenticateUser } from "../middleware/authenticateUser.js";
+  updateRecipe,
+} from '../controllers/RecipeController.js';
+import { authenticateUser } from '../middleware/authenticateUser.js';
 const router = express.Router();
 
 /**
@@ -27,7 +27,7 @@ const router = express.Router();
  * @param {string} path - Express path.
  * @param {callback} middleware - Express middleware.
  */
-router.post("/signup", createUser);
+router.post('/signup', createUser);
 
 /**
  * Route for user log in
@@ -39,7 +39,7 @@ router.post("/signup", createUser);
  * @param {string} path
  * @param {callback} middleware
  */
-router.post("/login", loginUser);
+router.post('/login', loginUser);
 
 /**
  * Route for creating a recipe.
@@ -52,7 +52,7 @@ router.post("/login", loginUser);
  * @param {callback} middleware - Express middleware.
  * @param {string} param - Recipe owner ID.
  */
-router.post("/createRecipe/", authenticateUser, createRecipe);
+router.post('/createRecipe/', authenticateUser, createRecipe);
 
 /**
  * Route for getting all recipes
@@ -64,7 +64,7 @@ router.post("/createRecipe/", authenticateUser, createRecipe);
  * @param {string} path
  * @param {callback} middleware
  */
-router.get("/recipes", getAllRecipes);
+router.get('/recipes', getAllRecipes);
 
 /**
  * Route for upvoting a recipe
@@ -76,9 +76,9 @@ router.get("/recipes", getAllRecipes);
  * @param {string} path
  * @param {function} middleware
  */
-router.put("/recipes/:recipeId/upvote", authenticateUser, upVoteRecipe);
+router.put('/recipes/:recipeId/upvote', authenticateUser, upVoteRecipe);
 
-router.get("/recipes/:recipeId/votes", getRecipeVotes);
+router.get('/recipes/:recipeId/votes', getRecipeVotes);
 
 /**
  * Route for subscribing to updates
@@ -89,7 +89,7 @@ router.get("/recipes/:recipeId/votes", getRecipeVotes);
  * @param {string} path
  * @param {function} middleware
  */
-router.post("/subscribe", subscribe);
+router.post('/subscribe', subscribe);
 
 /**
  * Route for getting user's recipes
@@ -100,7 +100,7 @@ router.post("/subscribe", subscribe);
  * @param {string} path
  * @param {function} middleware
  */
-router.get("/userRecipes", authenticateUser, getUserRecipes);
+router.get('/userRecipes', authenticateUser, getUserRecipes);
 
 /**
  * Route for deleting a recipe
@@ -111,7 +111,7 @@ router.get("/userRecipes", authenticateUser, getUserRecipes);
  * @param {string} path
  * @param {function} middleware
  */
-router.delete("/recipe/:recipeId/delete", authenticateUser, deleteRecipe);
+router.delete('/recipe/:recipeId/delete', authenticateUser, deleteRecipe);
 
 /**
  * Route for getting a single recipe
@@ -122,7 +122,7 @@ router.delete("/recipe/:recipeId/delete", authenticateUser, deleteRecipe);
  * @param {string} path
  * @param {function} middleware
  */
-router.get("/recipe/:recipeId", authenticateUser, getRecipe);
+router.get('/recipe/:recipeId', authenticateUser, getRecipe);
 
 /**
  * Route for updating a recipe
@@ -134,6 +134,6 @@ router.get("/recipe/:recipeId", authenticateUser, getRecipe);
  * @param {string} path - Express path.
  * @param {callback} middleware - Express middleware.
  */
-router.put("/recipe/:recipeId/update", authenticateUser, updateRecipe);
+router.put('/recipe/:recipeId/update', authenticateUser, updateRecipe);
 
 export default router;

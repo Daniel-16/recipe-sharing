@@ -1,8 +1,8 @@
-"use client";
-import Link from "next/link";
-import Brand from "./BrandLogo";
-import { useContext, RefObject } from "react";
-import { SectionContext } from "@/context/SectionContext";
+'use client';
+import Link from 'next/link';
+import Brand from './BrandLogo';
+import { useContext, RefObject } from 'react';
+import { SectionContext } from '@/context/SectionContext';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +10,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { AuthContext } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { UserNameContext } from "@/context/UsernameContext";
-import Cookies from "js-cookie";
+} from './ui/dropdown-menu';
+import { AuthContext } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
+import { UserNameContext } from '@/context/UsernameContext';
+import Cookies from 'js-cookie';
 
 export default function Navbar() {
   const { section3 } = useContext(SectionContext);
@@ -27,13 +27,13 @@ export default function Navbar() {
       window.scrollTo({
         top: ref.current.offsetTop,
         left: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
 
   const capitalizeFirstLetter = (str: string) => {
-    if (!str) return "";
+    if (!str) return '';
     return str?.charAt(0).toUpperCase() + str?.slice(1);
   };
 
@@ -65,17 +65,17 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
-                <a href={"/recipes"}>
+                <a href={'/recipes'}>
                   <div className="block hover:cursor-pointer">Recipes</div>
                 </a>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
-                <a href={"/create-recipe"}>
+                <a href={'/create-recipe'}>
                   <div className="block hover:cursor-pointer">Add recipes</div>
                 </a>
               </li>
               <li className="text-gray-700 hover:text-gray-900">
-                {isAuthenticated.includes("true") ? (
+                {isAuthenticated.includes('true') ? (
                   <a href="/my-recipes" className="block hover:cursor-pointer">
                     My recipes
                   </a>
@@ -92,7 +92,7 @@ export default function Navbar() {
               </li>
             </ul>
             <div className="md:space-x-2">
-              {isAuthenticated.includes("true") ? (
+              {isAuthenticated.includes('true') ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger>
                     <div className="rounded-full py-2 px-4 bg-gray-800 text-white text-lg font-bold">
@@ -107,12 +107,12 @@ export default function Navbar() {
                     <DropdownMenuItem
                       className="text-red-600"
                       onClick={() => {
-                        setIsAuthenticated("");
-                        setUsername("");
-                        Cookies.remove("currentUser");
-                        localStorage.removeItem("isAuthenticated");
-                        localStorage.removeItem("username");
-                        router.push("/login");
+                        setIsAuthenticated('');
+                        setUsername('');
+                        Cookies.remove('currentUser');
+                        localStorage.removeItem('isAuthenticated');
+                        localStorage.removeItem('username');
+                        router.push('/login');
                       }}
                     >
                       <svg
