@@ -1,16 +1,16 @@
-"use client";
-import Navbar from "@/components/Navbar";
-import Link from "next/link";
-import Axios, { AxiosError } from "axios";
-import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
-import { AuthContext } from "@/context/AuthContext";
-import { UserNameContext } from "@/context/UsernameContext";
-import Cookies from "js-cookie";
+'use client';
+import Navbar from '@/components/Navbar';
+import Link from 'next/link';
+import Axios, { AxiosError } from 'axios';
+import { useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { AuthContext } from '@/context/AuthContext';
+import { UserNameContext } from '@/context/UsernameContext';
+import Cookies from 'js-cookie';
 
 export default function Login() {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const router = useRouter();
   const { setIsAuthenticated } = useContext(AuthContext);
   const { setUsername } = useContext(UserNameContext);
@@ -30,10 +30,10 @@ export default function Login() {
     setLoading(true);
     try {
       let url;
-      if (process.env.NODE_ENV === "production") {
-        url = "https://recipe-sharing-942n.onrender.com";
+      if (process.env.NODE_ENV === 'production') {
+        url = 'https://recipe-sharing-942n.onrender.com';
       } else {
-        url = "http://localhost:7000";
+        url = 'http://localhost:7000';
       }
       const response = await Axios.post(
         `${url}/api/login`,
@@ -43,18 +43,18 @@ export default function Login() {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
 
       if (response.data.token) {
-        Cookies.set("currentUser", response.data.token);
+        Cookies.set('currentUser', response.data.token);
         const { username } = response.data.user;
         setUsername(username);
-        setIsAuthenticated("true");
+        setIsAuthenticated('true');
         setLoading(false);
-        router.push("/");
+        router.push('/');
         router.refresh();
       }
       console.log(response.data);
@@ -64,7 +64,7 @@ export default function Login() {
       if (error instanceof AxiosError) {
         console.log(error.response?.data.error);
         console.log(error.message);
-        if (error.message.toLowerCase() === "network error") {
+        if (error.message.toLowerCase() === 'network error') {
           setError(error.message);
         } else {
           setError(error.response?.data.error);
@@ -84,7 +84,7 @@ export default function Login() {
                 Log in to your account
               </h3>
               <p className="">
-                Don&apos;t have an account?{" "}
+                Don&apos;t have an account?{' '}
                 <Link
                   href="/signup"
                   className="font-medium text-[#7e525f] hover:text-[#986673] hover:underline"
@@ -103,8 +103,8 @@ export default function Login() {
                   required
                   className={
                     errorMessage !== null
-                      ? "w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border border-red-500 focus:border-[#7e525f] shadow-md rounded-lg duration-200"
-                      : "w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border focus:border-[#7e525f] shadow-md rounded-lg duration-200"
+                      ? 'w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border border-red-500 focus:border-[#7e525f] shadow-md rounded-lg duration-200'
+                      : 'w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border focus:border-[#7e525f] shadow-md rounded-lg duration-200'
                   }
                   placeholder="johndoe@mail.com"
                   value={email}
@@ -115,12 +115,12 @@ export default function Login() {
                 <label className="font-medium">Password</label>
                 <div className="relative">
                   <input
-                    type={passwordHidden ? "password" : "text"}
+                    type={passwordHidden ? 'password' : 'text'}
                     required
                     className={
                       errorMessage !== null
-                        ? "w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border border-red-500 focus:border-[#7e525f] shadow-md rounded-lg duration-200"
-                        : "w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border focus:border-[#7e525f] shadow-md rounded-lg duration-200"
+                        ? 'w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border border-red-500 focus:border-[#7e525f] shadow-md rounded-lg duration-200'
+                        : 'w-full mt-2 px-3 py-2 text-gray-800 bg-transparent outline-none border focus:border-[#7e525f] shadow-md rounded-lg duration-200'
                     }
                     placeholder="Enter a secure password"
                     onChange={handlePassword}
@@ -177,8 +177,8 @@ export default function Login() {
                 type="submit"
                 className={
                   loading
-                    ? "w-full px-4 py-2 text-white font-medium bg-[#a7727d] hover:cursor-not-allowed rounded-lg duration-150"
-                    : "w-full px-4 py-2 text-white font-medium bg-[#7e525f] hover:bg-[#986673] active:bg-[#7e525f] rounded-lg duration-150"
+                    ? 'w-full px-4 py-2 text-white font-medium bg-[#a7727d] hover:cursor-not-allowed rounded-lg duration-150'
+                    : 'w-full px-4 py-2 text-white font-medium bg-[#7e525f] hover:bg-[#986673] active:bg-[#7e525f] rounded-lg duration-150'
                 }
                 disabled={loading && true}
               >
@@ -203,7 +203,7 @@ export default function Login() {
                     Loading...
                   </>
                 ) : (
-                  "Sign in"
+                  'Sign in'
                 )}
               </button>
               {/* <div className="text-center">

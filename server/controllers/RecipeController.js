@@ -1,5 +1,5 @@
-import RecipeModel from "../models/RecipeModel.js";
-import UserModel from "../models/UserModel.js";
+import RecipeModel from '../models/RecipeModel.js';
+import UserModel from '../models/UserModel.js';
 
 /**
  * Creates a new recipe.
@@ -18,7 +18,7 @@ export const createRecipe = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         success: false,
-        error: "User not found",
+        error: 'User not found',
       });
     }
     const recipe = await RecipeModel.create({
@@ -60,7 +60,7 @@ export const getAllRecipes = async (req, res) => {
     } else {
       return res.status(404).json({
         success: false,
-        error: "Recipes not found or empty",
+        error: 'Recipes not found or empty',
       });
     }
   } catch (error) {
@@ -86,7 +86,7 @@ export const upVoteRecipe = async (req, res) => {
     if (!recipe) {
       return res.status(404).json({
         success: false,
-        error: "Recipe not found",
+        error: 'Recipe not found',
       });
     }
     const alreadyVoted = recipe.upvotes.includes(userId);
@@ -98,7 +98,7 @@ export const upVoteRecipe = async (req, res) => {
       );
       return res.status(200).json({
         success: true,
-        message: "Since you upvoted, you have removed your vote",
+        message: 'Since you upvoted, you have removed your vote',
       });
     }
 
@@ -106,7 +106,7 @@ export const upVoteRecipe = async (req, res) => {
     await recipe.save();
     res.status(200).json({
       success: true,
-      votes: "Upvoted this recipe",
+      votes: 'Upvoted this recipe',
     });
   } catch (error) {
     res.status(500).json({
@@ -129,7 +129,7 @@ export const getRecipeVotes = async (req, res) => {
     if (!upvotes) {
       return res.status(404).json({
         success: false,
-        error: "Could not find recipe",
+        error: 'Could not find recipe',
       });
     }
     res.status(200).json({
@@ -165,7 +165,7 @@ export const getUserRecipes = async (req, res) => {
     } else {
       return res.status(404).json({
         success: false,
-        message: "User not found",
+        message: 'User not found',
       });
     }
   } catch (error) {
@@ -196,7 +196,7 @@ export const deleteRecipe = async (req, res) => {
     } else {
       res.status(404).json({
         success: false,
-        message: "User not found",
+        message: 'User not found',
       });
     }
   } catch (error) {
@@ -227,7 +227,7 @@ export const getRecipe = async (req, res) => {
     }
     res.status(404).json({
       success: false,
-      message: "User not found",
+      message: 'User not found',
     });
   } catch (error) {
     res.status(500).json({
@@ -237,10 +237,10 @@ export const getRecipe = async (req, res) => {
   }
 };
 
-
 export const updateRecipe = async (req, res) => {
   const { recipeId } = req.params;
-  const { title, imageUrl, description, timeFrame, ingredients, instructions } = req.body;
+  const { title, imageUrl, description, timeFrame, ingredients, instructions } =
+    req.body;
 
   try {
     // Find the recipe by ID and update it
@@ -251,11 +251,15 @@ export const updateRecipe = async (req, res) => {
     );
 
     if (!updatedRecipe) {
-      return res.status(404).json({ message: "Recipe not found" });
+      return res.status(404).json({ message: 'Recipe not found' });
     }
 
-    res.status(200).json({ message: "Recipe updated successfully", updatedRecipe });
+    res
+      .status(200)
+      .json({ message: 'Recipe updated successfully', updatedRecipe });
   } catch (error) {
-    res.status(500).json({ message: "An error occurred while updating the recipe", error });
+    res
+      .status(500)
+      .json({ message: 'An error occurred while updating the recipe', error });
   }
 };

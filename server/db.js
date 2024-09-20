@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 /**
  * Connects to the MongoDB database.
@@ -8,12 +8,12 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       await mongoose.connect(`${process.env.MONGODB_PROD}`);
-      console.log("Connected to MongoDB in production");
+      console.log('Connected to MongoDB in production');
     } else {
       await mongoose.connect(`${process.env.MONGODB_DEV}`);
-      console.log("Connected to MongoDB in development");
+      console.log('Connected to MongoDB in development');
     }
   } catch (error) {
     throw new Error("Couldn't connect to DB", error);

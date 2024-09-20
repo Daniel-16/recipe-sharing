@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const NewsLetterSchema = new mongoose.Schema({
   email: {
@@ -6,12 +6,12 @@ const NewsLetterSchema = new mongoose.Schema({
     unique: true,
     match: [
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "Please enter a valid email",
+      'Please enter a valid email',
     ],
   },
 });
 
-NewsLetterSchema.pre("save", async function (next) {
+NewsLetterSchema.pre('save', async function (next) {
   const email = this.email;
   const findMail = await NewsLetterModel.findOne({ email });
   try {
@@ -27,5 +27,5 @@ NewsLetterSchema.pre("save", async function (next) {
   next();
 });
 
-const NewsLetterModel = mongoose.model("NewsLetter", NewsLetterSchema);
+const NewsLetterModel = mongoose.model('NewsLetter', NewsLetterSchema);
 export default NewsLetterModel;
